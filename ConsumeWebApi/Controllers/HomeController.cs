@@ -1,15 +1,17 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Web;
+using System.Net.Http.Headers;
 using System.Web.Mvc;
 using ConsumeWebApi.Models;
+using Newtonsoft.Json;
 
 namespace ConsumeWebApi.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly string baseUrl = "http://localhost:8080/api/";
+
         public ActionResult Index()
         {
             return View();
@@ -28,35 +30,29 @@ namespace ConsumeWebApi.Controllers
 
             return View();
         }
-    }
-    public ActionResult GetItems()
-    {
-        IEnumerable<Item> items = null;
 
-        using (var client = new HttpClient())
+
+        public ActionResult GetItems()
         {
-            client.BaseAddress = new Uri("http://localhost:8080/api/item");
+            IEnumerable<Item> items = new List<Item>();
 
-            var responseTask = client.GetAsync("item");
-            responseTask.Wait();
-
-            var result = responseTask.Result;
-
-            if (result.IsSuccessStatusCode)
+            using (var client = new HttpClient())
             {
-                var readTask = result.Content.ReadAsAsync<IList<Item>>();
-                readTask.Wait();
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var responseTask = client.GetAsync("item");
+                responseTask.Wait();
 
-                items = readTask.Result;
-            }
-            else
-            {
-                items = Enumerable.Empty<Item>();
+                var result = responseTask.Result;
 
-                ModelState.AddModelError(string.Empty, "Server error try after some time");
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsStringAsync().Result;
+                    items = JsonConvert.DeserializeObject<IEnumerable<Item>>(readTask);
+                }
+
+                return View(items);
             }
         }
-        return View(items);
     }
-    var responseTask = client.GetAsync("item");
 }
