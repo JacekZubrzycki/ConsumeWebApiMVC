@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using ConsumeWebApi.Models;
 using Newtonsoft.Json;
 
@@ -54,8 +55,7 @@ namespace ConsumeWebApi.Controllers
                 var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                 await client.PostAsync("item", content);
             }
-
-            return View(item);
+            return RedirectToAction("GetItems");
         }
 
         public ActionResult AddItem()
