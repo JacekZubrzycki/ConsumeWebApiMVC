@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using ConsumeWebApi.Models;
 using Newtonsoft.Json;
@@ -40,28 +41,28 @@ namespace ConsumeWebApi.Controllers
                 return View(items);
             }
         }
-        public void additem(string id, string itemname, string description, string price, string type)
+        [HttpPost]
+        [ActionName("additem")]
+        public async Task<ActionResult> AddItem(Item item)
         {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(baseUrl);
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-               
-              
 
 
-                //Item item = new Item(id, itemname, description, price, type);
-                Item item = new Item("", "a", "2", "f", "a");
                 var jsonString = JsonConvert.SerializeObject(item);
                 var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-                var responsetask = client.PostAsync("item",content);
-
-                
-
-
-                
+                await client.PostAsync("item", content);
             }
+
+            return View(item);
         }
 
+        public ActionResult AddItem()
+        {
+            return View();
+        }
     }
+
+}
 }
