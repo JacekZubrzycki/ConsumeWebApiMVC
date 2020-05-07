@@ -18,7 +18,7 @@ namespace ConsumeWebApi.Controllers
         {
             return View();
         }
-        
+
         public ActionResult GetItems()
         {
             IEnumerable<Item> items = new List<Item>();
