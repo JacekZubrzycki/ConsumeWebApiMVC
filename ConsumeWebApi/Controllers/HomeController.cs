@@ -54,8 +54,7 @@ namespace ConsumeWebApi.Controllers
                 var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                 await client.PostAsync("item", content);
             }
-
-            return View(item);
+            return RedirectToAction("GetItems");
         }
 
         public ActionResult AddItem()
