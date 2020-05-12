@@ -62,7 +62,26 @@ namespace ConsumeWebApi.Controllers
         {
             return View();
         }
+        [HttpPost]
+        [ActionName("deleteItem")]
+
+        public async Task<ActionResult> DeleteItem(String itemId)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseUrl);
+
+                var jsonString = JsonConvert.SerializeObject(0);
+                var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+            
+                await client.PostAsync("{itemID}", content);
+            }
+
+            return View(itemId);
+        }
+
+       
     }
 
 }
-}
+
