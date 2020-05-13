@@ -19,6 +19,7 @@ namespace ConsumeWebApi.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult GetItems()
         {
             IEnumerable<Item> items = new List<Item>();
@@ -41,6 +42,7 @@ namespace ConsumeWebApi.Controllers
                 return View(items);
             }
         }
+
         [HttpPost]
         [ActionName("additem")]
         public async Task<ActionResult> AddItem(Item item)
@@ -54,6 +56,7 @@ namespace ConsumeWebApi.Controllers
                 var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                 await client.PostAsync("item", content);
             }
+
             return RedirectToAction("GetItems");
         }
 
@@ -61,26 +64,40 @@ namespace ConsumeWebApi.Controllers
         {
             return View();
         }
-        [HttpPost]
-        [ActionName("deleteItem")]
 
-        public async Task<ActionResult> DeleteItem(String itemId)
+        [HttpPost]
+        [ActionName("DeleteItem")]
+        public async Task<ActionResult> DeleteItem(string Id)
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(baseUrl);
-
-                var jsonString = JsonConvert.SerializeObject(0);
-                var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-            
-                await client.PostAsync("{itemID}", content);
+                var uri = baseUrl + "item/" + Id;
+                Console.WriteLine(uri);
+                await client.DeleteAsync(uri);
             }
 
-            return View(itemId);
+            return RedirectToAction("GetItems");
         }
 
-       
+        public ActionResult DeleteItem(Item item)
+        {
+            using (var client = new HttpClient())
+            {
+                Item itemForDeletion = null;
+                string itemId = item.Id;
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var responseTask = client.GetAsync("item/byId/" + itemId);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsStringAsync().Result;
+                    itemForDeletion = JsonConvert.DeserializeObject<Item>(readTask);
+                }
+
+                return View(itemForDeletion);
+            }
+        }
     }
-
 }
-
