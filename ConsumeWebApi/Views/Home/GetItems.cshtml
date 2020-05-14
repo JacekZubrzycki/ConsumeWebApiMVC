@@ -6,14 +6,12 @@
 }
 
 
-    <div class="jumbotron">
-        <h2>List of all items</h2>
-        <div >
-    
-    
-        </div>
+<div class="jumbotron">
+    <h2>List of all items</h2>
 
-    </div>
+   
+</div>
+
 <table class="table">
     <tr>
        
@@ -34,7 +32,7 @@
         
 
         <th>
-            Edit or delete
+            @Html.ActionLink("Add new Item", "additem", "Home", new {@class="btn btn-primary btn-large"})
         </th>
 
     </tr>
