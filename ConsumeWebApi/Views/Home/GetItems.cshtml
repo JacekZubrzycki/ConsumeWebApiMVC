@@ -9,8 +9,8 @@
     <div class="jumbotron">
         <h2>List of all items</h2>
         <div >
-    |
-            @Html.ActionLink("Delete", "")
+    
+    
         </div>
 
     </div>
@@ -19,6 +19,7 @@
        
         <th>
             @Html.DisplayNameFor(model => model.ItemName)
+            
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -29,7 +30,13 @@
         <th>
             @Html.DisplayNameFor(model => model.Type)
         </th>
+
         
+
+        <th>
+            Edit or delete
+        </th>
+
     </tr>
 
     @foreach (var item in Model)
@@ -46,8 +53,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Type)
+                
             </td>
+            <td> @Html.ActionLink("Delete", "DeleteItem",new {id =item.Id},new {@class="btn btn-primary btn-large"})</td>
+             
         </tr>
     }
 
 </table>
+ 
