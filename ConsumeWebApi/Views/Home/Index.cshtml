@@ -2,8 +2,21 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="text">
+    <h1>Welcome Back </h1>
+    <p class="lead">Chose the </p>
+    
+    
+</div>
+<div class="button">
+    <a href="@Url.Action("GetItems", "Home")">
+        <button type="button"> Manager </button>
+    </a>
+    <a href="@Url.Action("SeeOrder", "Kitchen")">
+        <button type="button"> Manager </button>
+    </a>
+    <a href="@Url.Action("GetOrder", "Waiter")">
+        <button type="button"> Manager </button>
+    </a>
+    
 </div>
