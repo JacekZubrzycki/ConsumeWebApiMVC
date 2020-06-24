@@ -121,6 +121,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KitchenController.cs" />
+    <Compile Include="Controllers\WaiterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -151,6 +153,8 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Views\Home\DeleteItem.cshtml" />
     <Content Include="Views\Home\GetItems.cshtml" />
+    <Content Include="Views\Kitchen\SeeOrder.cshtml" />
+    <Content Include="Views\Waiter\GetOrder.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
