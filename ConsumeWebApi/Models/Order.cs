@@ -1,4 +1,6 @@
-﻿namespace ConsumeWebApi.Models
+﻿using Newtonsoft.Json;
+
+namespace ConsumeWebApi.Models
 {
     public class Order
     {

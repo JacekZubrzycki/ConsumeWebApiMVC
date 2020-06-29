@@ -1,4 +1,10 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Web.Mvc;
+using ConsumeWebApi.Models;
+using Newtonsoft.Json;
 
 namespace ConsumeWebApi.Controllers
 {
@@ -28,12 +34,16 @@ namespace ConsumeWebApi.Controllers
                 if (result.IsSuccessStatusCode)
                 {
                     var readTask = result.Content.ReadAsStringAsync().Result;
-                    items = JsonConvert.DeserializeObject<IEnumerable<Order>>(readTask);
+                    orders = JsonConvert.DeserializeObject<IEnumerable<Order>>(readTask);
                 }
 
                 return View(GetOrder);
             }
         }
-        
+
+        private ActionResult View(Func<ActionResult> getOrder)
+        {
+            return View();
+        }
     }
 }
