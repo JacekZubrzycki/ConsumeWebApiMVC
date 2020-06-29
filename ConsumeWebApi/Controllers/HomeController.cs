@@ -84,7 +84,7 @@ namespace ConsumeWebApi.Controllers
             using (var client = new HttpClient())
             {
                 Item itemForDeletion = null;
-                string itemId = item.Id;
+                var itemId = item.Id;
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var responseTask = client.GetAsync("item/byId/" + itemId);

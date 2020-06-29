@@ -12,10 +12,10 @@
 
 <table class="table">
     <tr>
-       
+
         <th>
             @Html.DisplayNameFor(model => model.ItemName)
-            
+
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -27,10 +27,9 @@
             @Html.DisplayNameFor(model => model.Type)
         </th>
 
-        
 
         <th>
-            @Html.ActionLink("Add new Item", "additem", "Home", new {@class="btn btn-primary btn-large"})
+            @Html.ActionLink("Add new Item", "additem", "Home", new {@class = "btn btn-primary btn-large"})
         </th>
 
     </tr>
@@ -49,12 +48,11 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Type)
-                
+
             </td>
-            <td> @Html.ActionLink("Delete", "DeleteItem",new {id =item.Id},new {@class="btn btn-primary btn-large"})</td>
-             
+            <td> @Html.ActionLink("Delete", "DeleteItem", new {id = item.Id}, new {@class = "btn btn-primary btn-large"})</td>
+
         </tr>
     }
 
 </table>
- 

@@ -19,7 +19,6 @@ namespace ConsumeWebApi.Controllers
 
 
         [HttpGet]
-
         public ActionResult getOrders()
         {
             IEnumerable<Order> orders = new List<Order>();

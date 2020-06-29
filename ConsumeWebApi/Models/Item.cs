@@ -5,10 +5,6 @@ namespace ConsumeWebApi.Models
     public class Item
 
     {
-        public Item()
-        {
-        }
-        
         [JsonProperty("itemId")] public string Id { get; set; }
 
         [JsonProperty("itemName")] public string ItemName { get; set; }
