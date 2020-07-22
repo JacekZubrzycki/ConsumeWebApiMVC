@@ -12,14 +12,10 @@ namespace ConsumeWebApi.Controllers
     {
         private readonly string baseUrl = "http://localhost:8080/api/";
 
-        public ActionResult SeeOrder()
-        {
-            return View();
-        }
-
-
+        
         [HttpGet]
-        public ActionResult getOrders()
+
+        public ActionResult seeOrder()
         {
             IEnumerable<Order> orders = new List<Order>();
 
@@ -27,7 +23,7 @@ namespace ConsumeWebApi.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var responseTask = client.GetAsync("order");
+                var responseTask = client.GetAsync("ordereditems");
                 responseTask.Wait();
 
                 var result = responseTask.Result;
@@ -38,13 +34,9 @@ namespace ConsumeWebApi.Controllers
                     orders = JsonConvert.DeserializeObject<IEnumerable<Order>>(readTask);
                 }
 
-                return View(SeeOrder);
+                return View(orders);
             }
-        }
-
-        private ActionResult View(Func<ActionResult> seeOrder)
-        {
-            return View();
         }
     }
 }
+
