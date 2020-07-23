@@ -1,9 +1,52 @@
-﻿
-
+﻿@model IEnumerable<ConsumeWebApi.Models.Order>
 @{
     ViewBag.Title = "Waiter";
 }
 
 <div class="jumbotron">
-     <h2> Waiter </h2>
- </div>
+    <h2> Waiter </h2>
+</div>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.itemName)
+
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.tableNO)
+        </th>
+
+
+    </tr>
+
+
+    @foreach (var order in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelOrder => order.itemName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelOrder => order.quantity)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelOrder => order.tableNO)
+
+            </td>
+
+
+        </tr>
+    }
+
+
+</table>

@@ -1,20 +1,53 @@
-﻿@{
+﻿@model IEnumerable<ConsumeWebApi.Models.OrderTotal>
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="text">
-    <h1>Welcome Back</h1>
-
+<div class="jumbotron">
+    <h2> Welcome </h2>
 </div>
-<div class="button">
-    <a href="@Url.Action("GetItems", "Home")">
-        <button type="button"> Manager </button>
-    </a>
-    <a href="@Url.Action("SeeOrder", "Kitchen")">
-        <button type="button"> Kitchen </button>
-    </a>
-    <a href="@Url.Action("GetOrder", "Waiter")">
-        <button type="button"> Waiter </button>
-    </a>
 
-</div>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.tableNo)
+
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.totalPrice)
+
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+
+
+    </tr>
+
+
+    @foreach (var ordertotal in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelOrder => ordertotal.tableNo)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelOrder => ordertotal.totalPrice)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelOrder => ordertotal.date)
+
+            </td>
+
+
+        </tr>
+    }
+
+
+</table>

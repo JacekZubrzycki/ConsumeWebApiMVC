@@ -12,9 +12,8 @@ namespace ConsumeWebApi.Controllers
     {
         private readonly string baseUrl = "http://localhost:8080/api/";
 
-        
-        [HttpGet]
 
+        [HttpGet]
         public ActionResult seeOrder()
         {
             IEnumerable<Order> orders = new List<Order>();
@@ -39,4 +38,3 @@ namespace ConsumeWebApi.Controllers
         }
     }
 }
-

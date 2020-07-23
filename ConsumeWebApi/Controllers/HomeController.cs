@@ -16,8 +16,31 @@ namespace ConsumeWebApi.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<OrderTotal> ordersTotal = new List<OrderTotal>();
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var responseTask = client.GetAsync("order");
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var read = result.Content.ReadAsStringAsync().Result;
+                    ordersTotal = JsonConvert.DeserializeObject<IEnumerable<OrderTotal>>(read);
+                }
+
+                return View(ordersTotal);
+            }
         }
+
+        /*
+        public ActionResult getOrderTotal()
+        {
+            
+        }
+        */
 
         [HttpGet]
         public ActionResult GetItems()
