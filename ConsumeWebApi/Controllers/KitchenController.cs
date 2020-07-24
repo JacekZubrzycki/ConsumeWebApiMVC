@@ -41,25 +41,12 @@ namespace ConsumeWebApi.Controllers
         {
             using (var client = new HttpClient())
             {
-                Order itemAsDone = null;
                 var itemId = order.itemID;
                 var tableNo = order.tableNO;
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var responseTask = client.GetAsync("ordereditems/done/" + itemId + "," + tableNo);
                 responseTask.Wait();
-                var result = responseTask.Result;
-                
-                var uri = baseUrl + "ordereditems/done/" + itemId + "," + tableNo;
-                Console.WriteLine(uri);
-                
-                if (result.IsSuccessStatusCode)
-                {
-                    var readTask = result.Content.ReadAsStringAsync().Result;
-                    itemAsDone = JsonConvert.DeserializeObject<Order>(readTask);
-                }
-
-               
             }
 
             return RedirectToAction("SeeOrder");
