@@ -12,7 +12,7 @@ namespace ConsumeWebApi.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly string baseUrl = "http://localhost:8080/api/";
+        private readonly string baseUrl = "http://10.152.196.10:8080/api/";
 
         public ActionResult Index()
         {
@@ -34,13 +34,43 @@ namespace ConsumeWebApi.Controllers
                 return View(ordersTotal);
             }
         }
-
-        /*
-        public ActionResult getOrderTotal()
+        [HttpPost]
+        [ActionName("PayOrder")]
+        public async Task<ActionResult> PayOrder(string Id)
         {
-            
+            using (var client = new HttpClient())
+            {
+                var uri = baseUrl + "order/" + Id;
+                Console.WriteLine(uri);
+                await client.DeleteAsync(uri);
+            }
+
+            return RedirectToAction("Index");
         }
-        */
+        public ActionResult PayOrder(OrderTotal orders)
+        {
+            using (var client = new HttpClient())
+            {
+                OrderTotal toBePaid = null;
+                var orderID = orders.orderID;
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var responseTask = client.GetAsync("order/byID" + orderID);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsStringAsync().Result;
+                    toBePaid = JsonConvert.DeserializeObject<OrderTotal>(readTask);
+                }
+                var uri = baseUrl + "order/" + orderID;
+                Console.WriteLine(uri);
+
+                return View(toBePaid);
+            }
+        }
+
+       
 
         [HttpGet]
         public ActionResult GetItems()

@@ -43,6 +43,10 @@
                 @Html.DisplayFor(modelOrder => order.tableNO)
 
             </td>
+            
+            <td>
+                @Html.ActionLink("Delivered", "Delivered", new {order.itemID, order.tableNO}, new {@class = "btn btn-primary btn-large"})
+                </td>
 
 
         </tr>

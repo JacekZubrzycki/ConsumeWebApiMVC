@@ -44,6 +44,10 @@
                 @Html.DisplayFor(modelOrder => ordertotal.date)
 
             </td>
+            
+            <td>
+                @Html.ActionLink("Confirm Payment", "PayOrder", new {id = ordertotal.orderID}, new {@class = "btn btn-primary btn-large"})
+                </td>
 
 
         </tr>

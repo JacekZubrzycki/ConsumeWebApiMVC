@@ -10,7 +10,7 @@ namespace ConsumeWebApi.Controllers
 {
     public class WaiterController : Controller
     {
-        private readonly string baseUrl = "http://localhost:8080/api/";
+        private readonly string baseUrl = "http://10.152.196.10:8080/api/";
 
 
         [HttpGet]
@@ -37,6 +37,20 @@ namespace ConsumeWebApi.Controllers
             }
         }
         
-        
+        public ActionResult Delivered(Order order)
+        {
+            using (var client = new HttpClient())
+            {
+                var itemId = order.itemID;
+                var tableNo = order.tableNO;
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var responseTask = client.DeleteAsync("ordereditems/delivered/" + itemId + "," + tableNo);
+                responseTask.Wait();
+            }
+
+            return RedirectToAction("GetOrder");
+
+        }
     }
 }

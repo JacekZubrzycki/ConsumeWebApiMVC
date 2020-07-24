@@ -1,0 +1,59 @@
+@model ConsumeWebApi.Models.OrderTotal
+
+@{
+    ViewBag.Title = "PayOrder";
+
+}
+<div class="jumbotron">
+    <h2>Confirm Payment</h2>
+    <div >
+
+
+    </div>
+</div>
+<table class="table">
+    <tr>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.tableNo)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.totalPrice)
+        </th>
+        
+        <th>
+                    @Html.DisplayNameFor(model => model.orderID)
+            </th>
+          <th>
+                            @Html.DisplayNameFor(model => model.date)
+                    </th>
+
+        <th>
+            @Html.DisplayFor(model => model.tableNo)
+        </th>
+
+        <th>
+            @Html.DisplayFor(model => model.totalPrice)
+        </th>
+        
+         <th>
+                    @Html.DisplayFor(model => model.orderID)
+                </th>
+         <th>
+                            @Html.DisplayFor(model => model.date)
+                        </th>
+    </tr>
+
+</table>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <input type="submit" value="Confirm" class="btn btn-default"
+               formmethod="post" formaction=@Url.Action("PayOrder")/>
+        @Html.ActionLink("Return to list", "Index")
+    </div>
+}
