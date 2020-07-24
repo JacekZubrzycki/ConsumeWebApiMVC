@@ -22,7 +22,7 @@ namespace ConsumeWebApi.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var responseTask = client.GetAsync("ordereditems");
+                var responseTask = client.GetAsync("ordereditems/undone");
                 responseTask.Wait();
 
                 var result = responseTask.Result;
@@ -36,5 +36,36 @@ namespace ConsumeWebApi.Controllers
                 return View(orders);
             }
         }
+        
+        public ActionResult Done(Order order)
+        {
+            using (var client = new HttpClient())
+            {
+                Order itemAsDone = null;
+                var itemId = order.itemID;
+                var tableNo = order.tableNO;
+                client.BaseAddress = new Uri(baseUrl);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var responseTask = client.GetAsync("ordereditems/done/" + itemId + "," + tableNo);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                
+                var uri = baseUrl + "ordereditems/done/" + itemId + "," + tableNo;
+                Console.WriteLine(uri);
+                
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsStringAsync().Result;
+                    itemAsDone = JsonConvert.DeserializeObject<Order>(readTask);
+                }
+
+               
+            }
+
+            return RedirectToAction("SeeOrder");
+
+        }
+        
+        
     }
 }

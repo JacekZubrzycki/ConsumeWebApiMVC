@@ -50,7 +50,9 @@
                 @Html.DisplayFor(modelItem => item.Type)
 
             </td>
-            <td> @Html.ActionLink("Delete", "DeleteItem", new {id = item.Id}, new {@class = "btn btn-primary btn-large"})</td>
+            <td>
+                 @Html.ActionLink("Delete", "DeleteItem", new {id = item.Id}, new {@class = "btn btn-primary btn-large"})
+            </td>
 
         </tr>
     }

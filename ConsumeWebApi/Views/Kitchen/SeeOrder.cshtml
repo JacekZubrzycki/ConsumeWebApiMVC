@@ -16,6 +16,11 @@
         </th>
 
         <th>
+            @Html.DisplayNameFor(model => model.quantity)
+
+        </th>
+
+        <th>
             @Html.DisplayNameFor(model => model.tableNO)
         </th>
 
@@ -31,9 +36,17 @@
             </td>
 
             <td>
+
+                @Html.DisplayFor(modelOrder => order.quantity)
+            </td>
+
+            <td>
                 @Html.DisplayFor(modelOrder => order.tableNO)
 
             </td>
+             <td>
+                 @Html.ActionLink("Done", "Done", new {order.itemID, order.tableNO}, new {@class = "btn btn-primary btn-large"})
+                 </td>
 
 
         </tr>

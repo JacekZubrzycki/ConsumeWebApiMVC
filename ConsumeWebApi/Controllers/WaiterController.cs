@@ -22,7 +22,7 @@ namespace ConsumeWebApi.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var responseTask = client.GetAsync("ordereditems");
+                var responseTask = client.GetAsync("ordereditems/done");
                 responseTask.Wait();
 
                 var result = responseTask.Result;
@@ -36,5 +36,7 @@ namespace ConsumeWebApi.Controllers
                 return View(orders);
             }
         }
+        
+        
     }
 }

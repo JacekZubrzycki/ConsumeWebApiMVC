@@ -73,8 +73,6 @@ namespace ConsumeWebApi.Controllers
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(baseUrl);
-
-
                 var jsonString = JsonConvert.SerializeObject(item);
                 var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                 await client.PostAsync("item", content);
