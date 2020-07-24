@@ -55,7 +55,7 @@ namespace ConsumeWebApi.Controllers
                 var orderID = orders.orderID;
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var responseTask = client.GetAsync("order/byID" + orderID);
+                var responseTask = client.GetAsync("order/byID/" + orderID);
                 responseTask.Wait();
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
@@ -63,7 +63,7 @@ namespace ConsumeWebApi.Controllers
                     var readTask = result.Content.ReadAsStringAsync().Result;
                     toBePaid = JsonConvert.DeserializeObject<OrderTotal>(readTask);
                 }
-                var uri = baseUrl + "order/" + orderID;
+                var uri = baseUrl + "order/byID/" + orderID;
                 Console.WriteLine(uri);
 
                 return View(toBePaid);

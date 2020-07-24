@@ -6,7 +6,7 @@ namespace ConsumeWebApi.Models
     {
         [JsonProperty("tableNo")] public string tableNo { get; set; }
 
-        [JsonProperty("orderID")] public int orderID { get; set; }
+        [JsonProperty("orderID")] public string orderID { get; set; }
 
         [JsonProperty("totalPrice")] public double totalPrice { get; set; }
 
