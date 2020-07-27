@@ -63,9 +63,7 @@ namespace ConsumeWebApi.Controllers
                     var readTask = result.Content.ReadAsStringAsync().Result;
                     toBePaid = JsonConvert.DeserializeObject<OrderTotal>(readTask);
                 }
-                var uri = baseUrl +"order/id/"+ orderID;
-                Console.WriteLine(uri);
-
+               
                 return View(toBePaid);
             }
         }
@@ -146,9 +144,7 @@ namespace ConsumeWebApi.Controllers
                     var readTask = result.Content.ReadAsStringAsync().Result;
                     itemForDeletion = JsonConvert.DeserializeObject<Item>(readTask);
                 }
-                var uri = baseUrl + itemForDeletion;
-                Console.WriteLine(uri);
-
+                
                 return View(itemForDeletion);
             }
         }
