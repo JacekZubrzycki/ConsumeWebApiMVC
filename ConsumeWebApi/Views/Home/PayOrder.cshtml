@@ -7,6 +7,7 @@
 <div class="jumbotron">
     <h2>Confirm Payment</h2>
     <div >
+        @Html.DisplayForModel(Model)
 
 
     </div>
@@ -22,13 +23,13 @@
         <th>
             @Html.DisplayNameFor(model => model.totalPrice)
         </th>
-        
+
         <th>
-                    @Html.DisplayNameFor(model => model.orderID)
-            </th>
-          <th>
-                            @Html.DisplayNameFor(model => model.date)
-                    </th>
+            @Html.DisplayNameFor(model => model.orderID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
 
         <th>
             @Html.DisplayFor(model => model.tableNo)
@@ -37,13 +38,13 @@
         <th>
             @Html.DisplayFor(model => model.totalPrice)
         </th>
-        
-         <th>
-                    @Html.DisplayFor(model => model.orderID)
-                </th>
-         <th>
-                            @Html.DisplayFor(model => model.date)
-                        </th>
+
+        <th>
+            @Html.DisplayFor(model => model.orderID)
+        </th>
+        <th>
+            @Html.DisplayFor(model => model.date)
+        </th>
     </tr>
 
 </table>

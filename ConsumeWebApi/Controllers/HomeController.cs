@@ -12,7 +12,7 @@ namespace ConsumeWebApi.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly string baseUrl = "http://10.152.196.10:8080/api/";
+        private readonly string baseUrl = "http://localhost:8080/api/";
 
         public ActionResult Index()
         {
@@ -55,7 +55,7 @@ namespace ConsumeWebApi.Controllers
                 var orderID = orders.orderID;
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var responseTask = client.GetAsync("order/byID/" + orderID);
+                var responseTask = client.GetAsync("order/id/" + orderID);
                 responseTask.Wait();
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
@@ -63,7 +63,7 @@ namespace ConsumeWebApi.Controllers
                     var readTask = result.Content.ReadAsStringAsync().Result;
                     toBePaid = JsonConvert.DeserializeObject<OrderTotal>(readTask);
                 }
-                var uri = baseUrl + "order/byID/" + orderID;
+                var uri = baseUrl +"order/id/"+ orderID;
                 Console.WriteLine(uri);
 
                 return View(toBePaid);
@@ -146,6 +146,8 @@ namespace ConsumeWebApi.Controllers
                     var readTask = result.Content.ReadAsStringAsync().Result;
                     itemForDeletion = JsonConvert.DeserializeObject<Item>(readTask);
                 }
+                var uri = baseUrl + itemForDeletion;
+                Console.WriteLine(uri);
 
                 return View(itemForDeletion);
             }

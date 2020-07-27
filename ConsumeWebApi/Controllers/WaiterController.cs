@@ -10,7 +10,7 @@ namespace ConsumeWebApi.Controllers
 {
     public class WaiterController : Controller
     {
-        private readonly string baseUrl = "http://10.152.196.10:8080/api/";
+        private readonly string baseUrl = "http://localhost:8080/api/";
 
 
         [HttpGet]
