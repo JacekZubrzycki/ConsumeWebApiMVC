@@ -36,11 +36,11 @@ namespace ConsumeWebApi.Controllers
         }
         [HttpPost]
         [ActionName("PayOrder")]
-        public async Task<ActionResult> PayOrder(string Id)
+        public async Task<ActionResult> PayOrder(String id)
         {
             using (var client = new HttpClient())
             {
-                var uri = baseUrl + "order/" + Id;
+                var uri = baseUrl + "order/" + id;
                 Console.WriteLine(uri);
                 await client.DeleteAsync(uri);
             }
@@ -52,7 +52,7 @@ namespace ConsumeWebApi.Controllers
             using (var client = new HttpClient())
             {
                 OrderTotal toBePaid = null;
-                var orderID = orders.orderID;
+                var orderID = orders.id;
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var responseTask = client.GetAsync("order/id/" + orderID);

@@ -1,51 +1,52 @@
 @model ConsumeWebApi.Models.OrderTotal
 
+
 @{
-    ViewBag.Title = "PayOrder";
+    ViewBag.Title = "Payment";
 
 }
 <div class="jumbotron">
     <h2>Confirm Payment</h2>
-    <div >
-        @Html.DisplayForModel(Model)
+ 
 
-
-    </div>
 </div>
+<hr/>
 <table class="table">
-    <tr>
+    <dl class="dl-horizontal">
 
 
-        <th>
+        <dt>
             @Html.DisplayNameFor(model => model.tableNo)
-        </th>
+        </dt>
 
-        <th>
-            @Html.DisplayNameFor(model => model.totalPrice)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.orderID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.date)
-        </th>
-
-        <th>
+        <dd>
             @Html.DisplayFor(model => model.tableNo)
-        </th>
+        </dd>
 
-        <th>
+        <dt>
+            @Html.DisplayNameFor(model => model.totalPrice)
+        </dt>
+
+        <dd>
             @Html.DisplayFor(model => model.totalPrice)
-        </th>
+        </dd>
 
-        <th>
-            @Html.DisplayFor(model => model.orderID)
-        </th>
-        <th>
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
             @Html.DisplayFor(model => model.date)
-        </th>
-    </tr>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+    </dl>
 
 </table>
 
