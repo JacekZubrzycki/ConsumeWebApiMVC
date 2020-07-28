@@ -47,6 +47,7 @@ namespace ConsumeWebApi.Controllers
 
             return RedirectToAction("Index");
         }
+
         public ActionResult PayOrder(OrderTotal orders)
         {
             using (var client = new HttpClient())
