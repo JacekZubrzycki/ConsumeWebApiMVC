@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
 namespace ConsumeWebApi.Models
@@ -7,7 +8,8 @@ namespace ConsumeWebApi.Models
     {
         [JsonProperty("itemId")] public string Id { get; set; }
 
-        [JsonProperty("itemName")] public string ItemName { get; set; }
+        [Display(Name = "Item Name"), JsonProperty("itemName")] 
+        public string ItemName { get; set; }
 
         [JsonProperty("itemDesc")] public string Description { get; set; }
 
