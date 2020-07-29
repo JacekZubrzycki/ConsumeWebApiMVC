@@ -72,7 +72,7 @@ namespace ConsumeWebApi.Controllers
             {
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var responseTask = client.GetAsync("ordereditems/undone");
+                var responseTask = client.GetAsync("logs/Income");
                 responseTask.Wait();
 
                 var result = responseTask.Result;
@@ -83,6 +83,7 @@ namespace ConsumeWebApi.Controllers
                     incomes = JsonConvert.DeserializeObject<IEnumerable<Income>>(readTask);
                 }
 
+               
                 return View(incomes);
             }
         }
