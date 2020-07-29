@@ -1,0 +1,40 @@
+@model System.Collections.Generic.IEnumerable<ConsumeWebApi.Models.Income>
+
+@{
+    ViewBag.Title = "Income";
+}
+<div class="jumbotron">
+    <h2>Statistics</h2>
+</div>
+<td>
+    @Html.ActionLink("Sold Items", "ItemsLog", new {}, new {@class = "btn btn-primary btn-large"})
+    @Html.ActionLink("Overall", "Overall", new {}, new {@class = "btn btn-primary btn-large"})
+    @Html.ActionLink("Income", "IncomeLog", new {}, new {@class = "btn btn-primary btn-large"})
+</td>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.daily)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monthly)
+        </th>
+    </tr>
+
+    
+    @foreach (var incomes in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => incomes.daily)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => incomes.monthly)
+            </td>
+
+        </tr>
+    }
+
+</table>

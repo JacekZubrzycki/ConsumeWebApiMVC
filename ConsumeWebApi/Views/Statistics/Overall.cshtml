@@ -1,0 +1,53 @@
+@model IEnumerable<ConsumeWebApi.Models.OrdersLog>
+
+@{
+    ViewBag.Title = "Orders Log";
+}
+<div class="jumbotron">
+    <h2>Statistics </h2>
+</div>
+<td>
+    @Html.ActionLink("Sold Items", "ItemsLog", new {}, new {@class = "btn btn-primary btn-large"})
+    @Html.ActionLink("Overall", "Overall", new {}, new {@class = "btn btn-primary btn-large"})
+      @Html.ActionLink("Income", "IncomeLog", new {}, new {@class = "btn btn-primary btn-large"})
+</td>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.tableNo)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.listOfOrders)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.timestamp)
+        </th>
+        
+    </tr>
+
+    @foreach (var order in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => order.tableNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.listOfOrders)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.totalPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.timestamp)
+
+            </td>
+
+        </tr>
+    }
+
+</table>

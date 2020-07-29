@@ -1,0 +1,12 @@
+@{
+    ViewBag.Title = "Main Log";
+}
+<div class="jumbotron">
+    <h2>Statistics</h2>
+</div>
+
+<td>
+    @Html.ActionLink("Sold Items", "ItemsLog", new {}, new {@class = "btn btn-primary btn-large"})
+    @Html.ActionLink("Overall", "Overall", new {}, new {@class = "btn btn-primary btn-large"})
+    @Html.ActionLink("Income", "IncomeLog", new {}, new {@class = "btn btn-primary btn-large"})
+</td>

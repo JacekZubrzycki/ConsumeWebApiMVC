@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace ConsumeWebApi.Controllers
 {
-    public class LogController : Controller
+    public class StatisticsController : Controller
     {
     private readonly string baseUrl = "http://localhost:8080/api/";
 

@@ -1,0 +1,40 @@
+@model IEnumerable<ConsumeWebApi.Models.QuantityLog>
+
+@{
+    ViewBag.Title = "Quantity Log";
+}
+<div class="jumbotron">
+    <h2>Statistics</h2>
+</div>
+<td>
+    @Html.ActionLink("Sold Items", "ItemsLog", new {}, new {@class = "btn btn-primary btn-large"})
+    @Html.ActionLink("Overall", "Overall", new {}, new {@class = "btn btn-primary btn-large"})
+      @Html.ActionLink("Income", "IncomeLog", new {}, new {@class = "btn btn-primary btn-large"})
+</td>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.itemName)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantityBought)
+        </th>
+    </tr>
+
+    
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.itemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantityBought)
+            </td>
+
+        </tr>
+    }
+
+</table>

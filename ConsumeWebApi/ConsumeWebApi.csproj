@@ -123,7 +123,7 @@
     <Compile Include="Controllers\HelpDeskController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KitchenController.cs" />
-    <Compile Include="Controllers\LogController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\WaiterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -164,10 +164,10 @@
     <Content Include="Views\Home\GetItems.cshtml" />
     <Content Include="Views\Home\PayOrder.cshtml" />
     <Content Include="Views\Kitchen\SeeOrder.cshtml" />
-    <Content Include="Views\Log\IncomeLog.cshtml" />
-    <Content Include="Views\Log\ItemsLog.cshtml" />
-    <Content Include="Views\Log\MainLog.cshtml" />
-    <Content Include="Views\Log\Overall.cshtml" />
+    <Content Include="Views\Statistics\IncomeLog.cshtml" />
+    <Content Include="Views\Statistics\ItemsLog.cshtml" />
+    <Content Include="Views\Statistics\MainLog.cshtml" />
+    <Content Include="Views\Statistics\Overall.cshtml" />
     <Content Include="Views\Waiter\GetOrder.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
