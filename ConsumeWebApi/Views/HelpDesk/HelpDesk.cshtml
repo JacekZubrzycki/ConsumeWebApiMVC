@@ -1,0 +1,39 @@
+@model System.Collections.Generic.IEnumerable<ConsumeWebApi.Models.Help>
+
+@{
+    ViewBag.Title = "Help Desk";
+}
+<div class="jumbotron">
+    <h2> Help Deesk</h2>
+</div>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.tableNo)
+
+        </th>
+
+
+
+    </tr>
+
+
+    @foreach (var help in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelHelp => help.tableNo)
+            </td>
+
+            
+            
+            <td>
+                @Html.ActionLink("Helped", "Helped", new { help.tableNo}, new {@class = "btn btn-primary btn-large"})
+            </td>
+
+
+        </tr>
+    }
+</table>
