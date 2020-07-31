@@ -31,7 +31,7 @@ namespace ConsumeWebApi.Controllers
                     var readTask = result.Content.ReadAsStringAsync().Result;
                     help = JsonConvert.DeserializeObject<IEnumerable<Help>>(readTask);
                 }
-
+                Response.AddHeader("Refresh", "5");  
                 return View(help);
 
             }
